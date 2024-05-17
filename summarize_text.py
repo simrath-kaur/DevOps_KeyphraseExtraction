@@ -4,7 +4,7 @@ from datetime import timedelta
 from pandas import json_normalize
 from extractive import ExtractiveSummarizer
 import ast  
-import PKE
+import pke
 import string
 import pandas as pd
 import traditional_evaluation
@@ -208,7 +208,7 @@ def summarize_text(input):
             
             
             
-            extractor = PKE.unsupervised.MultipartiteRank()
+            extractor = pke.unsupervised.MultipartiteRank()
             extractor.load_document(input=abstract_document, normalization="stemming")
             pos = {'NOUN', 'PROPN', 'ADJ'}
             stoplist = list(string.punctuation)
