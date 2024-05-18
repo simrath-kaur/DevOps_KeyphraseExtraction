@@ -3,14 +3,18 @@ pipeline {
 
     environment {
         REPO_URL = 'https://github.com/simrath-kaur/DevOps_KeyphraseExtraction'
+        BRANCH = 'main'  // Ensure this is the correct branch name
         DOCKER_IMAGE = 'simrathkaur/devops_keyphrase_extraction'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Clone the repository
-                git url: env.REPO_URL
+                script {
+                    retry(3) { // Retry in case of transient issues
+                        git branch: env.BRANCH, url: env.REPO_URL
+                    }
+                }
             }
         }
 
@@ -52,4 +56,3 @@ pipeline {
         }
     }
 }
-
