@@ -30,6 +30,9 @@ RUN /app/download_gdrive.sh '1sMDg9foTQpLkcajpEshLkYaibbu5jgwN' 'GloVe/glove.6b/
 # Model file
 RUN /app/download_gdrive.sh '16m9DtnT68aF-9rsaZeVGj5916U8qHoHw' 'models/epoch=3.ckpt'
 
+# Verify the integrity of the downloaded model file
+RUN ls -lh models/epoch=3.ckpt && head -n 10 models/epoch=3.ckpt
+
 # Move contents of PKE folder to pke folder
 RUN mv PKE/* pke/
 
