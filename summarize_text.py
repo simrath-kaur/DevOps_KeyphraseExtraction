@@ -21,7 +21,7 @@ tqdm.pandas()
 import torch
     
 # Load the checkpoint file with map_location=torch.device('cpu')
-checkpoint = torch.load("/app/models/epoch=3.ckpt", map_location=torch.device('cpu'))
+checkpoint = torch.load("/app/models/epoch=33.ckpt", map_location=torch.device('cpu'))
 
 # Rename the key from 'pytorch-ligthning_version' to 'pytorch-lightning_version'
 checkpoint['pytorch-lightning_version'] = checkpoint.pop('pytorch-ligthning_version')
