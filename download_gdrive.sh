@@ -32,3 +32,6 @@ if [[ ! -f "${FILE_NAME}" || ! -s "${FILE_NAME}" ]]; then
     echo "Download failed or file is empty: ${FILE_NAME}"
     exit 1
 fi
+
+# Call the Python script to extract confirmation code and download the file
+python download_google_drive.py $FILE_ID $FILE_NAME
