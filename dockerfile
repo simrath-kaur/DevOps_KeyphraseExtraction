@@ -9,7 +9,7 @@ COPY . /app
 
 RUN apt-get update && apt-get install -y curl unzip wget
 
-COPY download_google_drive.sh /app/download_gdrive.sh
+COPY download_gdrive.sh /app/download_gdrive.sh
 COPY download_google_drive.py /app/download_google_drive.py
 
 RUN chmod +x /app/download_gdrive.sh
