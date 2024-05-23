@@ -16,8 +16,8 @@ RUN chmod +x /app/download_gdrive.sh
 
 RUN mkdir -p GloVe/glove.6b/ models/ pke/
 
-RUN /app/download_google_drive.sh '1sMDg9foTQpLkcajpEshLkYaibbu5jgwN' 'GloVe/glove.6b/glove.6B.100d.txt'
-RUN /app/download_google_drive.sh '16m9DtnT68aF-9rsaZeVGj5916U8qHoHw' 'models/epoch=33.ckpt'
+RUN /app/download_gdrive.sh '1sMDg9foTQpLkcajpEshLkYaibbu5jgwN' 'GloVe/glove.6b/glove.6B.100d.txt'
+RUN /app/download_gdrive.sh '16m9DtnT68aF-9rsaZeVGj5916U8qHoHw' 'models/epoch=33.ckpt'
 
 RUN ls -lh models/epoch=33.ckpt && head -n 10 models/epoch=33.ckpt
 
