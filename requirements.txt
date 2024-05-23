@@ -85,5 +85,4 @@ wasabi==1.1.2
 weasel==0.3.4
 Werkzeug==3.0.3
 yarl==1.9.4
-requests
 
