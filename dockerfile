@@ -1,30 +1,31 @@
 FROM python:3.9-slim
 
+# Set the working directory in the container
 WORKDIR /app
 
+# Copy the requirements file into the container at /app
 COPY requirements.txt /app/
+
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install requests
-RUN pip install beautifulsoup4
 
-COPY . /app
-
-RUN apt-get update && apt-get install -y curl unzip wget
-
-COPY download_gdrive.sh /app/download_gdrive.sh
-COPY download_google_drive.py /app/download_google_drive.py
-
-RUN chmod +x /app/download_gdrive.sh
-
+# Create necessary directories
 RUN mkdir -p GloVe/glove.6b/ models/ pke/
 
-RUN /app/download_gdrive.sh '1sMDg9foTQpLkcajpEshLkYaibbu5jgwN' 'GloVe/glove.6b/glove.6B.100d.txt'
-RUN /app/download_gdrive.sh '16m9DtnT68aF-9rsaZeVGj5916U8qHoHw' 'models/epoch=33.ckpt'
+# Copy the manually downloaded GloVe file into the container
+COPY /home/simrath/KeyphraseExtraction/GloVe/glove.6B/glove.6B.100d.txt GloVe/glove.6b/glove.6B.100d.txt
 
-RUN ls -lh models/epoch=33.ckpt && head -n 10 models/epoch=33.ckpt
+# Copy the manually downloaded model file into the container
+COPY /home/simrath/KeyphraseExtraction/models/epoch=3.ckpt models/epoch=3.ckpt
 
-RUN mv PKE/* pke/
+# Copy the current directory contents into the container at /app
+COPY . /app
 
+# Move the contents of PKE folder to pke folder
+RUN cp -r PKE/* pke/ 
+
+# Make port 5551 available to the world outside this container
 EXPOSE 5551
 
+# Run app.py when the container launches
 CMD ["python", "app.py"]
