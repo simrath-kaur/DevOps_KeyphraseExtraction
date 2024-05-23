@@ -21,19 +21,19 @@ tqdm.pandas()
 import torch
     
 # Load the checkpoint file with map_location=torch.device('cpu')
-checkpoint = torch.load("models/epoch=3.ckpt", map_location=torch.device('cpu'))
+checkpoint = torch.load("/app/models/epoch=3.ckpt", map_location=torch.device('cpu'))
 
 # Rename the key from 'pytorch-ligthning_version' to 'pytorch-lightning_version'
 checkpoint['pytorch-lightning_version'] = checkpoint.pop('pytorch-ligthning_version')
 
 # Save the modified checkpoint
-torch.save(checkpoint, "models/epoch=3_modified.ckpt")
+torch.save(checkpoint, "/app/models/epoch=3_modified.ckpt")
 
 # Now load the model using ExtractiveSummarizer.load_from_checkpoint
 from extractive import ExtractiveSummarizer
 
 # Load the model checkpoint
-checkpoint_path = "models/epoch=3_modified.ckpt"
+checkpoint_path = "/app/models/epoch=3_modified.ckpt"
 model = ExtractiveSummarizer.load_from_checkpoint(checkpoint_path)
 
 def summarize_text(input):
