@@ -5,6 +5,9 @@ import sys
 def extract_confirm_code(file_id):
     # Make a GET request to obtain the confirmation code
     response = requests.get(f"https://docs.google.com/uc?export=download&id={file_id}")
+    
+    # Print the response text for debugging
+    print(response.text)
 
     # Check if the response contains the confirmation code
     match = re.search(r"confirm=([a-zA-Z0-9-_]+)", response.text)
@@ -14,6 +17,7 @@ def extract_confirm_code(file_id):
     else:
         # If no confirmation code found, return None
         return None
+
 def main():
     file_id = sys.argv[1]
     file_name = sys.argv[2]
