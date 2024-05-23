@@ -13,10 +13,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN mkdir -p GloVe/glove.6b/ models/ pke/
 
 # Copy the manually downloaded GloVe file into the container
-COPY /home/simrath/KeyphraseExtraction/GloVe/glove.6B/glove.6B.100d.txt GloVe/glove.6b/glove.6B.100d.txt
+COPY GloVe/glove.6b/glove.6B.100d.txt GloVe/glove.6b/glove.6B.100d.txt
 
 # Copy the manually downloaded model file into the container
-COPY /home/simrath/KeyphraseExtraction/models/epoch=3.ckpt models/epoch=3.ckpt
+COPY models/epoch=3.ckpt models/epoch=3.ckpt
 
 # Copy the current directory contents into the container at /app
 COPY . /app
