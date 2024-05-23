@@ -9,10 +9,10 @@ COPY . /app
 
 RUN apt-get update && apt-get install -y curl unzip wget
 
-COPY download_google_drive.sh /app/download_google_drive.sh
+COPY download_google_drive.sh /app/download_gdrive.sh
 COPY download_google_drive.py /app/download_google_drive.py
 
-RUN chmod +x /app/download_google_drive.sh
+RUN chmod +x /app/download_gdrive.sh
 
 RUN mkdir -p GloVe/glove.6b/ models/ pke/
 
