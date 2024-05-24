@@ -13,10 +13,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get update && apt-get install -y wget unzip && apt-get clean
 
 # Create necessary directories
-RUN mkdir -p GloVe/glove.6b/ models/ pke/
+RUN mkdir -p GloVe/glove.6B/ models/ pke/
 
 # Copy the manually downloaded files from the Jenkins workspace to the Docker image
-COPY GloVe/glove.6b/glove.6B.100d.txt GloVe/glove.6b/glove.6B.100d.txt
+COPY GloVe/glove.6B/glove.6B.100d.txt GloVe/glove.6B/glove.6B.100d.txt
 COPY models/epoch=3.ckpt models/epoch=3.ckpt
 
 # Copy the current directory contents into the container at /app
