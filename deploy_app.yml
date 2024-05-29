@@ -1,6 +1,7 @@
 # deploy_app.yml
 ---
 - hosts: localhost
+  gather_facts: no 
   become: true
   tasks:
     - name: Ensure kubectl is installed
