@@ -15,7 +15,7 @@
       ignore_errors: yes
 
     - name: Apply Kubernetes Deployment
-      command: kubectl apply -f /path/to/k8s-deployment.yml -n devops-keyphrase-extraction
+      command: kubectl apply -f k8s-deployment.yml -n devops-keyphrase-extraction
 
     - name: Apply Kubernetes Service
-      command: kubectl apply -f /path/to/k8s-service.yml -n devops-keyphrase-extraction
+      command: kubectl apply -f k8s-service.yml -n devops-keyphrase-extraction
