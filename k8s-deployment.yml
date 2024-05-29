@@ -1,0 +1,28 @@
+# k8s-deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keyphrase-extraction-deployment
+  namespace: devops-keyphrase-extraction
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: keyphrase-extraction
+  template:
+    metadata:
+      labels:
+        app: keyphrase-extraction
+    spec:
+      containers:
+        - name: keyphrase-extraction-container
+          image: simrathkaur/devops_keyphrase_extraction:latest
+          ports:
+            - containerPort: 5551
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "512Mi"
+              cpu: "1"
