@@ -2,7 +2,8 @@
 - hosts: localhost
   gather_facts: no
   remote_user: simrath
-  become: false
+  become: yes
+  
   tasks:
     - name: Ensure kubectl is installed
       apt:
