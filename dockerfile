@@ -10,7 +10,7 @@ COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install additional required packages for downloading files
-RUN apt-get update && apt-get install -y wget unzip && apt-get clean
+#RUN apt-get update && apt-get install -y wget unzip && apt-get clean
 
 # Create necessary directories
 RUN mkdir -p GloVe/glove.6B/ models/ pke/
