@@ -3,39 +3,7 @@
   gather_facts: no
   remote_user: simrath
   become: false
-  pre_tasks:
-    - name: Ensure no other apt processes are running
-      shell: |
-        while fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 1; done
-        while fuser /var/lib/apt/lists/lock >/dev/null 2>&1; do sleep 1; done
-        while fuser /var/cache/apt/archives/lock >/dev/null 2>&1; do sleep 1; done
-      changed_when: false
-
-    - name: Remove dpkg lock file if it exists
-      file:
-        path: /var/lib/dpkg/lock
-        state: absent
-      changed_when: false
-
-    - name: Remove apt lists lock file if it exists
-      file:
-        path: /var/lib/apt/lists/lock
-        state: absent
-      changed_when: false
-
-    - name: Remove apt archives lock file if it exists
-      file:
-        path: /var/cache/apt/archives/lock
-        state: absent
-      changed_when: false
-  
   tasks:
-    - name: Ensure kubectl is installed
-      apt:
-        name: kubectl
-        state: present
-        update_cache: yes
-
     - name: Create Kubernetes Namespace
       command: kubectl create namespace devops-keyphrase-extraction
       ignore_errors: yes
