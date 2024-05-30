@@ -5,6 +5,10 @@
   become: false
   tasks:
 
+    - name: Set kubectl context to Minikube
+      command: minikube kubectl -- get pods
+      ignore_errors: yes
+
     - name: Apply Kubernetes Deployment
       command: kubectl apply -f k8s-deployment.yml -n devops-keyphrase-extraction
 
