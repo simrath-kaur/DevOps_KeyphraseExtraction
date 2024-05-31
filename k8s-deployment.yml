@@ -5,7 +5,7 @@ metadata:
   name: keyphrase-extraction-deployment
   namespace: devops-keyphrase-extraction
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: keyphrase-extraction
