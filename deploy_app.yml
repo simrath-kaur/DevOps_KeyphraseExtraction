@@ -9,6 +9,10 @@
       command: minikube kubectl -- get pods
       ignore_errors: yes
 
+    - name: Create Namespace
+      command: kubectl create namespace devops-keyphrase-extraction
+      ignore_errors: yes
+
     - name: Apply Kubernetes Deployment
       command: kubectl apply --validate=false -f /home/simrath/KeyphraseExtraction/k8s-deployment.yml -n devops-keyphrase-extraction
 
